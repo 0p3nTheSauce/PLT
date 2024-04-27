@@ -1,0 +1,8 @@
+void Main () { $C+ $D+
+// Python style for loop
+// for2.pav
+  int i;
+  for i in (3, 4, 5, -16, 300)
+    write(i);
+}
+

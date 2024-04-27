@@ -1,0 +1,16 @@
+void Main() { $C+
+// Python style for loop
+// for5.pav
+  int i = 1, j;
+  char ch;
+  for (char c = 'a' ; i <= 10 ; ++c ) {
+    write(c, i, (int)c);
+    if (i > 3) break;
+    i++;
+  }
+  j = 90;
+  ch = 'a';
+  ch = max((char) 1, 'a');
+  i = 'a' + 1;
+
+}

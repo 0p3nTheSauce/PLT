@@ -1,0 +1,6 @@
+void Main() { $C+
+// Python style for loop
+// for6.pav
+  int i;
+  for i in (1, 2, 3) halt;
+}

@@ -1,0 +1,33 @@
+  COMPILER PVMAsm $CN
+  /* Grammar for subset of PVM assembler language
+     P.D. Terry, Rhodes University */
+  
+  CHARACTERS
+    control     = CHR(0) .. CHR(31) .
+    Printable   = ANY - control .
+    InString    = Printable - '"' .
+    Digits      = "0123456789" .
+    LF          = CHR(10) .
+    CR          = CHR(13) .
+  
+  TOKENS
+    Number      = [ "-" ] Digits { Digits } .
+    String      = '"' { InString } '"' .
+    EOL         = LF .
+    Comment     = ";" { Printable } CR .
+  
+  IGNORE control - LF
+  
+  PRODUCTIONS
+    PVMAsm      = { Statement } .
+    Statement   = [ Number ] [ Instruction ] [ Comment ] SYNC EOL .
+    Instruction = TwoWord | OneWord | PrintString .
+    TwoWord     = ( "LDA" | "LDC" | "DSP" | "BRN" | "BZE"  ) Number .
+    OneWord
+    = (   "ADD"  | "AND"  | "ANEW" | "CEQ"  | "CGE"  | "CGT"  | "CLE"  | "CLT"
+        | "CNE"  | "DIV"  | "HALT" | "INPB" | "INPI" | "LDV"  | "LDXA" | "MUL"
+        | "NEG"  | "NOP"  | "NOT"  | "OR"   | "PRNB" | "PRNI" | "PRNL" | "REM"
+        | "STO"  | "SUB" ) .
+    PrintString = "PRNS" String .
+  
+  END PVMAsm.

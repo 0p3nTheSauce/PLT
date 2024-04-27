@@ -1,0 +1,3 @@
+\ a comment at the start! \
+a* s.d | g+ | ( i? o o [A-D] ) ;  \ and one at the end \
+\ another for good measure \

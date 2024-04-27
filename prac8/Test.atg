@@ -1,0 +1,21 @@
+COMPILER Test $NC
+
+CHARACTERS
+  lf         = CHR(10) .
+  backslash  = CHR(92) .
+  control    = CHR(0) .. CHR(31) .
+  letter     = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" .
+  digit      = "0123456789" .
+  at		 = "@".
+  period     = ".".
+  
+TOKENS
+	EOL = lf .
+	Email = letter digit digit letter  at "campus.ru.ac.za".
+	
+PRODUCTIONS
+Test = { Email } . 
+
+
+
+END Test.

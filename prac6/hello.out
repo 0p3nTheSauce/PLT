@@ -1,0 +1,4 @@
+0            ; Every language can support this program
+0     PRNS  "Hello world"
+2     PRNL        
+3     HALT        

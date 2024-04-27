@@ -1,0 +1,51 @@
+0     DSP   3      ; n is v0 , f is v1 , i is v3
+2     LDA   0     
+4     LDC   1     
+6     STO          ; n = 1 ;
+7     LDA   0     
+9     LDV         
+10    LDC   20     ; / / max = 20 , constant
+12    CLE          ; while ( n < = max ) {
+13    BZE   78    
+15    LDA   1     
+17    LDC   1     
+19    STO          ; f = 1 ;
+20    LDA   2     
+22    LDA   0     
+24    LDV         
+25    STO          ; i = n ;
+26    LDA   2     
+28    LDV         
+29    LDC   0     
+31    CGT          ; while ( i > 0 ) {
+32    BZE   55    
+34    LDA   1     
+36    LDA   1     
+38    LDV         
+39    LDA   2     
+41    LDV         
+42    MUL         
+43    STO         
+44    LDA   2      ; f = f * i ;
+46    LDA   2     
+48    LDV         
+49    LDC   1     
+51    SUB         
+52    STO          ; i = i - 1 ;
+53    BRN   26     ; }
+55    LDA   0     
+57    LDV         
+58    PRNI         ; write ( n ) ;
+59    PRNS  "! = " ; write ( "! = " ) ;
+61    LDA   1     
+63    LDV         
+64    PRNI         ; write ( f ) ;
+65    PRNS  "\n"   ; write ( "\n" ) ( or use PRNL )
+67    LDA   0     
+69    LDA   0     
+71    LDV         
+72    LDC   1     
+74    ADD         
+75    STO          ; n = n + 1 ;
+76    BRN   7      ; }
+78    HALT        

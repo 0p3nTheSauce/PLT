@@ -1,0 +1,16 @@
+void main() { $C+
+// showing directives/pragmas
+  const max = 6;
+  int[] list = new int[max];
+  int i = 0;
+  while (i < max) {
+    bool test;
+    write(i);
+    list[i] = -2 * i;
+    i = i + 1;
+    $SD
+  }
+  $ST   // symbol table
+  $HD   // heap
+}
+

@@ -1,0 +1,50 @@
+import library.*;
+
+COMPILER Calc  $CN
+/* Simple four function calculator with 26 memory cells
+   P.D. Terry, Rhodes University; extended KL Bradshaw, 2023 */
+
+  static double[] mem = new double[26];
+
+CHARACTERS
+  digit      = "0123456789" .
+  letter     = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" .
+
+TOKENS
+  Number     = digit { digit } [ "." { digit } ] .
+  Variable   = letter .
+
+IGNORE CHR(0) .. CHR(31)
+
+PRODUCTIONS
+  Calc                               (. int index = 0; double value = 0.0;
+                                        for (int i = 0; i < 26; i++) mem[i] = 0.0; .)
+  = { Variable                       (. index = token.val.charAt(0) - 'A'; .)
+      "=" Expression<out value>      (. mem[index] = value;
+                                        IO.writeLine(value); .)
+    } EOF .
+
+  Expression<out double expVal>      (. double expVal1 = 0.0; .)
+  = Term<out expVal>
+    {   "+" Term<out expVal1>        (. expVal += expVal1; .)
+      | "-" Term<out expVal1>        (. expVal -= expVal1; .)
+    } .
+
+  Term<out double termVal>           (. double termVal1 = 0.0; .)
+  = Factor<out termVal>
+    {   "*" Factor<out termVal1>     (. termVal *= termVal1; .)
+      | "/" Factor<out termVal1>     (. termVal /= termVal1; .)
+    } .
+
+  Factor<out double factVal>         (. factVal = 0.0; .)
+  =   Number                         (. try {
+                                          factVal = Double.parseDouble(token.val);
+                                        } catch (NumberFormatException e) {
+                                          factVal = 0; SemError("number out of range");
+                                        } .)
+    | Variable                       (. int index = token.val.charAt(0) - 'A';
+                                        factVal = mem[index]; .)
+    | "(" Expression<out factVal> ")"
+    .
+
+END Calc.

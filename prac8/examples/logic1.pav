@@ -1,0 +1,9 @@
+void main () { $C+
+// logic1.pav
+// Short circuit Boolean operations
+  bool i, j, k;
+  while (true) {
+    read(i, j, k);
+    write(i && j || k);
+  }
+}

@@ -1,0 +1,9 @@
+void Main () { $C+ $D+
+// Python style for loop
+// for1.pav
+  int i;
+  for i in (1, 2, 3, 4) {
+		writeLine(i);
+   }
+}
+

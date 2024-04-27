@@ -1,0 +1,4 @@
+; Every language can support this program
+  PRNS     "Hello world"
+  PRNL
+  HALT

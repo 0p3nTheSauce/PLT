@@ -1,0 +1,9 @@
+void main () { $C+
+// repeat2.pav
+// Simple repeat until loop with errors
+  int i = 0;
+  Repeat
+    Write(i);
+    i = i + 1;
+  Until (i = 10);
+}

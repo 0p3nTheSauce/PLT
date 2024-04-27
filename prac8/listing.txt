@@ -1,0 +1,7 @@
+
+   1 G19t1234@campus.ru.ac.za
+**** ^ EOF expected
+   2 g17A9999@campus.ru.ac.za
+   3 G21H5566@campus.ru.ac.za
+
+1 errors detected

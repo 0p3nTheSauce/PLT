@@ -1,0 +1,22 @@
+ASSEM
+BEGIN
+  {    0 } DSP      1
+  {    2 } LDC      1
+  {    4 } LDC      2
+  {    6 } LDC      3
+  {    8 } LDC      4
+  {   10 } LDC      4
+  {   12 } LDA      0
+  {   14 } FFS     
+  {   15 } STO     
+  {   16 } LDA      0
+  {   18 } LDV     
+  {   19 } PRNI    
+  {   20 } PRNL    
+  {   21 } CPY     
+  {   22 } BZE      26
+  {   24 } BRN      12
+  {   26 } POPM    
+  {   27 } INPB    
+  {   28 } HALT    
+END.

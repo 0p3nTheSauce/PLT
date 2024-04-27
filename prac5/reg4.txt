@@ -1,0 +1,2 @@
+a* s d | g | \comment\\anothercomment\ ( i o o ) ;  \hopefully no errors \
+a.s.d? \ d is optional \ | 2 | [ a-s BC A-S 0-9]* (î | f+) ;

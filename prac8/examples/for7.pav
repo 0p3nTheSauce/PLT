@@ -1,0 +1,9 @@
+void Main() {
+// Python style for loop
+// for6.pav
+    int i;  // small primes
+    for i in (2, 3, 5, 7, 11) {
+      i = 13;                       // should this be allowed?
+      write(i, " is a small prime");
+    }
+} // Main

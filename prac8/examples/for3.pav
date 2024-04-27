@@ -1,0 +1,9 @@
+void Main () { $C+
+// Python style for loop - truth table
+// for3.pav
+  bool a, b;
+  for a in (false, true)
+    for b in (false, true)
+      writeLine(a, b, a || b, a && b);
+}
+

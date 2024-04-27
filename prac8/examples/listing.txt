@@ -1,0 +1,15 @@
+
+   1 void Main () { $C+ $D+
+   2 // Python style for loop
+   3 // for1.pav
+   4   int i;
+   5   for i in (6, 3, 4, 7, 5, -16, 300) {
+   6     if (i % 5 == 0) break;
+****                          ^ break must be inside a loop
+   7     write(i); }
+   8   writeLine();
+   9   bool b;
+  10   for b in (true, false, 3 > 4) write(b);
+  11 }
+
+1 errors detected

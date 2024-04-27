@@ -1,0 +1,28 @@
+     COMPILER RE
+      /* Regular expression grammar
+         P.D. Terry, Rhodes University */
+
+      CHARACTERS
+        control  = CHR(1) .. CHR(31) .
+        noquote1 = ANY - control - "'" - CHR(0) .
+        noquote2 = ANY - control - '"' - CHR(0) .
+        meta     = "()*|.;[]-?+" .
+        simple   = ANY - control - "'" - '"' - meta - CHR(0) .
+
+      TOKENS
+        atomic  = simple .
+        escaped = "'" noquote1 "'" | '"' noquote2 '"' .
+
+      COMMENTS FROM "\" TO "\"
+      IGNORE  control
+
+      PRODUCTIONS
+        RE         = { Expression ";" } EOF .
+        Expression = Term { "|" Term } .
+        Term       = Factor { [ "." ] Factor } .
+        Factor     = Element [ "*" | "?" | "+" ] .
+        Element    = Atom | Range | "(" Expression ")" .
+        Range      = "[" OneRange { OneRange } "]" .
+        OneRange   = Atom [ "-" Atom ] .
+        Atom       = atomic | escaped .
+      END RE.

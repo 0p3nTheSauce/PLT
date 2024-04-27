@@ -1,0 +1,30 @@
+     COMPILER RE $CN
+     /* Regular expression grammar - determine underlying alphabet 
+		and where terminals are used (Java version)
+		P.D. Terry, Rhodes University; modified KL Bradshaw 2023 */
+
+      CHARACTERS
+        lf       = CHR(10) .
+		control  = CHR(1) .. CHR(31) .
+        noquote1 = ANY - control - "'" - CHR(0) .
+        noquote2 = ANY - control - '"' - CHR(0) .
+        meta     = "()*|.;[]-?+" .
+        simple   = ANY - control - "'" - '"' - meta - CHR(0) .
+
+      TOKENS
+        atomic  = simple .
+        escaped = "'" noquote1 "'" | '"' noquote2 '"' .
+		EOL     = lf .
+		
+      IGNORE  control - lf
+
+      PRODUCTIONS
+        RE         = { Expression EOL } EOF .
+        Expression = Term { "|" Term } .
+        Term       = Factor { [ "." ] Factor } .
+        Factor     = Element [ "*" | "?" | "+" ] .
+        Element    = Atom | Range | "(" Expression ")" .
+        Range      = "[" OneRange { OneRange } "]" .
+        OneRange   = Atom [ "-" Atom ] .
+        Atom       = atomic | escaped .
+      END RE.

@@ -1,0 +1,9 @@
+void Main () { $C+
+// repeat1.pav
+// simple repeat until loop
+  int i = 0;
+  repeat
+    write(i);
+    i = i + 1;
+  until (i >= 10);
+}

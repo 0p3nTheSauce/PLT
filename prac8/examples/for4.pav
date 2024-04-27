@@ -1,0 +1,11 @@
+void Main () { $C+    $D+
+  bool a = true;
+  bool b ;
+  bool c;
+  final int yy;
+  const t = true;
+  for a in (false, t)
+    for a in (false, true)
+      writeLine(a, b, a || b, a && b);
+}
+

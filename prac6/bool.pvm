@@ -1,0 +1,59 @@
+      DSP    3      ; v0 is x, v1 is y, v2 is z
+    2 PRNS   "   X     Y     Z     X OR !Y AND Z\n"
+    4 LDA    0
+      LDC    0
+      STO        ; x = false;
+    9 LDA    1      ; repeat
+   11 LDC    0
+   13 STO        ;   y = false;
+      LDA    2      ;   repeat
+   16 LDC    0
+   18 STO        ;     z = false;
+      LDA    0      ;     repeat
+      LDV
+   22 PRNB       ;       write(x);
+      LDA    1
+   25 LDV
+   26 PRNB          ;       write(y);
+      LDA    2
+      LDV
+   30 PRNB       ;       write(z);
+      LDA    0
+   33 LDV
+   34 LDA    1
+      LDV
+      NOT           ;       (not y)
+   38 LDA    2
+   40 LDV
+   41 AND        ;       (not y and z)
+   42 OR            ;       x or (not y and z)
+      PRNB       ;       write(x || !Y && Z);
+   44 PRNS   "\n"   ;       write("\n");
+   46 LDA    2
+      LDA    2
+      LDV
+   51 NOT
+   52 STO        ;       Z = ! Z;
+      LDA    2
+   55 LDV
+   56 NOT
+      BZE    19     ;     until !Z;
+      LDA    1
+   61 LDA    1
+   63 LDV
+   64 NOT
+      STO        ;     Y = ! Y;
+   66 LDA    1
+   68 LDV
+      NOT
+      BZE    14     ;   until !Y;
+   72 LDA    0
+   74 LDA    0
+   76 LDV
+      NOT
+   78 STO           ;   X = !X;
+   79 LDA    0
+      LDV
+      NOT
+   83 BZE    9      ; until !X;
+      HALT
